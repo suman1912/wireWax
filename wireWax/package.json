@@ -20,14 +20,11 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "express-validator": "^6.9.2",
-    "get-video-duration": "^3.0.2",
     "md5": "^2.3.0",
     "moment": "^2.29.1",
     "node-datetime": "^2.1.2",
     "nodejs-base64": "^1.0.3",
     "sha1": "^1.1.1",
-    "swagger-jsdoc": "^7.0.0-rc.6",
-    "swagger-ui-express": "^4.1.6",
     "urlencode": "^1.1.0"
   },
   "devDependencies": {

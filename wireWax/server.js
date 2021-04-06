@@ -42,6 +42,3 @@ http.listen(process.env.PORT, process.env.HOSTNAME, () => {
     console.log(`Server running on port: http://${process.env.HOSTNAME}:${process.env.PORT}`);
     //console.log(`Server running on port: http://${config.HOST}:${config.PORT}`);
 });
-// http.listen(port, hostname, () => {
-//     console.log(`Server running on port: http://${hostname}:${port}`);
-// });

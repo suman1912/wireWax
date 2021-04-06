@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { getVideoDurationInSeconds } = require('get-video-duration');
 const rootDir = require('../../../helpers/path');
 const error = require(`${rootDir}/helpers/error`);
 
@@ -7,11 +6,14 @@ const markupData = require(`${rootDir}/helpers/getData`);
 
 const fileName = __filename.slice(__dirname.length + 1, -3);
 
+/* Get data and filtering frames and location by this function */
 exports.getGraphicsMarkupFilteredData = async (req, res, next) => {
     try {
         let in_frame = req.query.in_frame,
             out_frame = req.query.out_frame,
             location = req.query.location,
+            paginationStart = req.query.paginationStart,
+            paginationEnd = req.query.paginationEnd,
             filterData = null,
             url = 'https://wirewax.s3-eu-west-1.amazonaws.com/CodeTest/graphics-markup-test-data.json';
 
@@ -42,6 +44,8 @@ exports.getGraphicsMarkupFilteredData = async (req, res, next) => {
             filterData = responseArray;
         }
 
+        filterData.slice(paginationStart, paginationEnd);
+        
         if (resData) {
             res.status(200).json({ status: 1, msg: 'Data fetched successfully.', data: filterData });
             res.end();
@@ -50,6 +54,7 @@ exports.getGraphicsMarkupFilteredData = async (req, res, next) => {
             res.end();
         }
     } catch (err) {
+        console.log(err);
         error.logError(fileName, err.stack.toString()); // Write error detail to passing the errors after calling this function start here 
         res.status(500).json({ status: 2, msg: 'Server authentication failed! Please try again.' });
         res.end();

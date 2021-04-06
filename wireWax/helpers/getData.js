@@ -8,6 +8,7 @@ const error = require(`${rootDir}/helpers/error`);
 const fileName = __filename.slice(__dirname.length + 1, -3);
 
 module.exports = {
+    /* Retriving the data after request by calling the axios */
     retriveData: (url) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
